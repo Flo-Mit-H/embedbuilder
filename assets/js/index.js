@@ -10,59 +10,11 @@ var activeFields, colNum = 1, num = 0,
         hex = hex.replace('#', '').match(/.{1,2}/g)
         return [parseInt(hex[0], 16), parseInt(hex[1], 16), parseInt(hex[2], 16), 1];
     }, json = {
-        content: "You can~~not~~ do `this`.```py\nAnd this.\nprint('Hi')```\n*italics* or _italics_     __*underline italics*__\n**bold**     __**underline bold**__\n***bold italics***  __***underline bold italics***__\n__underline__     ~~Strikethrough~~",
+        content: "",
         embed: {
-            title: "Hello ~~people~~ world :wave:",
-            description: "You can use [links](https://discord.com) or emojis :smile: 😎\n```\nAnd also code blocks\n```",
-            color: 4321431,
-            timestamp: new Date().toISOString(),
-            url: "https://discord.com",
-            author: {
-                name: "Author name",
-                url: "https://discord.com",
-                icon_url: "https://unsplash.it/100"
-            },
-            thumbnail: {
-                url: "https://unsplash.it/200"
-            },
-            image: {
-                url: "https://unsplash.it/380/200"
-            },
-            footer: {
-                text: "Footer text",
-                icon_url: "https://unsplash.it/100"
-            },
-            fields: [
-                {
-                    name: "Field 1, *lorem* **ipsum**, ~~dolor~~",
-                    value: "Field value"
-                },
-                {
-                    name: "Field 2",
-                    value: "You can use custom emojis  <:Kekwlaugh:722088222766923847>. <:GangstaBlob:742256196295065661>",
-                    inline: false
-                },
-                {
-                    name: "Inline field",
-                    value: "Fields can be inline",
-                    inline: true
-                },
-                {
-                    name: "Inline field",
-                    value: "*Lorem ipsum*",
-                    inline: true
-                },
-                {
-                    name: "Inline field",
-                    value: "value",
-                    inline: true
-                },
-                {
-                    name: "Another field",
-                    value: "> Nope, didn't forget about code blocks",
-                    inline: false
-                }
-            ]
+            title: "Titel",
+            description: "Beschreibung",
+            color: 4321431
         }
     };
 
@@ -160,11 +112,11 @@ window.onload = () => {
         toObj = jsonString => JSON.parse(jsonString.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (x, y) => y ? "" : x));
     buildGui = (object, opts) => {
         gui.innerHTML = `
-            <div class="item content"><p class="ttle">Message content</p></div>
+            <div class="item content"><p class="ttle">Nachrichteninhalt</p></div>
             <div class="edit">
-                <textarea class="editContent" placeholder="Message content" maxlength="2000" autocomplete="off">${encodeHTML(object.content || '')}</textarea>
+                <textarea class="editContent" placeholder="Nachrichteninhalt" maxlength="2000" autocomplete="off">${encodeHTML(object.content || '')}</textarea>
             </div>
-            <div class="item author rows2"><p class="ttle">Author</p></div>
+            <div class="item author rows2"><p class="ttle">Autor</p></div>
             <div class="edit">
                 <div class="linkName">
                     <div class="editIcon">
@@ -207,14 +159,14 @@ window.onload = () => {
                 </div>                        
             </div>                        
             <div class="item title inlineField">
-                <p class="ttle">Title</p>
-                <input class="editTitle" type="text" placeholder="Title" autocomplete="off" maxlength="256" value="${encodeHTML(object.embed?.title || '')}">
+                <p class="ttle">Titel</p>
+                <input class="editTitle" type="text" placeholder="Titel" autocomplete="off" maxlength="256" value="${encodeHTML(object.embed?.title || '')}">
             </div>
-            <div class="item description"><p class="ttle">Description</p></div>
+            <div class="item description"><p class="ttle">Beschreibung</p></div>
             <div class="edit">
-                <textarea class="editDescription" placeholder="Embed description" maxlength="2048" autocomplete="off">${encodeHTML(object.embed?.description || '')}</textarea>
+                <textarea class="editDescription" placeholder="Embed Beschreibung" maxlength="2048" autocomplete="off">${encodeHTML(object.embed?.description || '')}</textarea>
             </div>
-            <div class="item fields"><p class="ttle">Fields</p></div>
+            <div class="item fields"><p class="ttle">Felder</p></div>
             <div class="edit"></div>
             <div class="item thumbnail largeImg"><p class="ttle">Thumbnail</p></div>
             <div class="edit">
@@ -253,7 +205,7 @@ window.onload = () => {
                     </div>
                 </div>
             </div>
-            <div class="item image largeImg"><p class="ttle">Image</p></div>
+            <div class="item image largeImg"><p class="ttle">Bild</p></div>
             <div class="edit">
                 <div class="linkName">
                     <div class="editIcon">
