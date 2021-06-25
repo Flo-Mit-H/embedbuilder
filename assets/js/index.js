@@ -10,7 +10,6 @@ var activeFields, colNum = 1, num = 0,
         hex = hex.replace('#', '').match(/.{1,2}/g)
         return [parseInt(hex[0], 16), parseInt(hex[1], 16), parseInt(hex[2], 16), 1];
     }, json = {
-        content: "",
         embed: {
             title: "Titel",
             description: "Beschreibung",
